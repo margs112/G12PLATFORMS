@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SENTRO PARTYLIST</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: url('red2.jpg') no-repeat center center / cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .fire-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .fire-overlay img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.9;
+      animation: fire-flicker 2s infinite alternate ease-in-out;
+    }
+
+    @keyframes fire-flicker {
+      0% { transform: scale(1.02) translateY(-1px); opacity: 0.2; }
+      100% { transform: scale(1.05) translateY(1px); opacity: 0.3; }
+    }
+
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      max-width: 760px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .top {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .logo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      animation: dropIn 1s ease-out;
+    }
+
+    .logo img {
+      width: 100%;
+      border-radius: 50%;
+    }
+
+    .accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .text-box {
+      background: #fff;
+      border-radius: 15px;
+      padding: 1rem 1.5rem;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      position: relative;
+    }
+.text-box.collapsed:hover {
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+    .text-box:hover {
+      transform: scale(1.03);
+    }
+
+    .text-box h1 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #8B0000;
+      margin: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .toggle-icon {
+      font-size: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .text-box.open .toggle-icon {
+      transform: rotate(180deg);
+    }
+
+    .collapse-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease, opacity 0.4s ease;
+      padding-top: 0;
+      opacity: 0;
+    }
+
+    .collapse-content.active {
+  max-height: 500px; /* you can adjust this */
+  overflow-y: auto;
+  padding-top: 1rem;
+  opacity: 1;
+  scrollbar-width: thin;
+}
+
+
+
+
+    .collapse-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .collapse-inner img {
+  max-width: 100%;
+  height: auto;
+  width: auto;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  display: block;
+  margin: 0 auto;
+}
+
+
+
+    @media (max-width: 768px) {
+      .top {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .collapse-inner img {
+        max-height: 200px;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.98); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes dropIn {
+      from { transform: translateY(-40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="fire-overlay">
+    <img src="https://media.tenor.com/3Dv1dt0VcxUAAAAM/fire.gif" alt="Fire" />
+  </div>
+
+  <div class="wrapper">
+    <div class="top">
+      <div class="logo">
+        <img src="sentro.png" alt="Logo">
+      </div>
+    </div>
+
+    <div class="accordion">
+
+      <!-- Sample Text Box -->
+     
+      <div class="text-box" onclick="toggleCollapse(this)">
+        <h1>
+          GRADUATION BALL
+          <span class="toggle-icon">+</span>
+        </h1>
+                <div class="collapse-content">
+         <div class="collapse-inner">
+    <p> The Graduation Ball is a heartfelt celebration marking the end of an unforgettable chapter, where graduating students celebrate their journey and create cherished memories before stepping into a new chapter. As part of our platform, we wholeheartedly ensure to make the graduation ball a night to remember, to give back to the batch that deserves a spectacular ending.</p>
+          </div>
+        </div>
+      </div>
+
+<div class="text-box" onclick="toggleCollapse(this)">
+        <h1>
+          PLATO'T PUSO
+          <span class="toggle-icon">+</span>
+        </h1>
+                <div class="collapse-content">
+         <div class="collapse-inner">
+    <p> A one-day culinary competition to be implemented during Buwan ng Wika, in partnership with culinary clubs, designed to bring together the creativity and talent of our Senior High School students. Each section will have one representative to showcase their skills by preparing a beloved Filipino Dish. More than a competition, it is a chance to share stories through food, celebrate student talents, embrace Filipino cultures and traditions,
+and bring our school community together.
+The participant with the highest score
+from the judges will be awarded.
+</p>
+          </div>
+        </div>
+      </div>
+
+<div class="text-box" onclick="toggleCollapse(this)">
+        <h1>
+          BIZIGNITE: A BUSINESS EXPO
+          <span class="toggle-icon">+</span>
+        </h1>
+                <div class="collapse-content">
+         <div class="collapse-inner">
+    <p> This 3-day event will feature student-run business kiosks at a designated venue, allowing ABM students to sell their products and apply their skills. There will also be guest talks by young entrepreneurs to provide insight and inspiration. The event will conclude with an awarding ceremony to recognize outstanding business performances. Its goal is to prepare students for post-high school life by enhancing their business knowledge and managerial skills.
+</p>
+          </div>
+        </div>
+      </div>
+<div class="text-box" onclick="toggleCollapse(this)">
+        <h1>
+          PISTA SA NAYON
+          <span class="toggle-icon">+</span>
+        </h1>
+                <div class="collapse-content">
+         <div class="collapse-inner">
+    <p> Classes will unite for a single day to commemorate the Buwan ng Wika and portray a fiesta. Every class will invite one another to their own table, and serve Filipino food. For a small exhibit, some students might also bring antique models that highlight the rich history and culture of the Philippines. Additionally, students are allowed to sell their own products that promote Filipino 
+culture. The ultimate objective is to 
+have the classes unite as a "nayon" in 
+celebration of their fiesta.
+</p>
+          </div>
+        </div>
+      </div>
+<div class="text-box" onclick="toggleCollapse(this)">
+        <h1>
+          MA-HUMSS-AY TRIVIA QUIZ BEE
+          <span class="toggle-icon">+</span>
+        </h1>
+                <div class="collapse-content">
+         <div class="collapse-inner">
+    <p> This quiz bee challenges HUMSS students to showcase their knowledge on strand-specific subjects. Each section will send two duos (4 students total), who will compete against teams from other sections. This event promotes critical thinking and teamwork. It consists of three rounds—Easy, Average, and Difficult—with a tie-breaker if needed. Questions will cover HUMSS-related topics like Politics, Social Sciences, World Religions, and Philosophy.
+
+</p>
+          </div>
+        </div>
+      </div>
+<div class="text-box" onclick="toggleCollapse(this)">
+        <h1>
+          CIVICALLY SPEAKING: EVERYTHING HUMANITIES
+          <span class="toggle-icon">+</span>
+        </h1>
+                <div class="collapse-content">
+         <div class="collapse-inner">
+    <p> A weekly episodic podcast that will explore the relevance of Humanities and Social Sciences in today’s society and governance. Each episode will focus on topics that will challenge the critical thinking skills and social awareness of the audience, guests, and hosts. Possible topics include: major political movements, current events, and prolific social issues present in the Philippines in the modern day. Through sharing real-life stories, guest interviews, and meaningful discussions, listeners 
+will be able to raise political and social 
+consciousness—emphasizing the values of 
+empathy, awareness, and objectivity.
+</p>
+          </div>
+        </div>
+      </div>
+<div class="text-box" onclick="toggleCollapse(this)">
+        <h1>
+          STEMBITUIN: ANG LIWANAG NG AGHAM
+          <span class="toggle-icon">+</span>
+        </h1>
+                <div class="collapse-content">
+         <div class="collapse-inner">
+    <p> Let's light up our Ber-Months, Lasallians! This will be a parol making competition for all STEM students. Each class will showcase their talent in making a creative, unique, and innovative parol design; all while promoting sustainability, ensuring that they all keep the SDG 12: Responsible Consumption and Production in mind when making the parol. This aims to foster sustainability through reducing, reusing, and recycling the materials to be used. The project will begin in September and will conclude on the last week of November in preparation for the holiday spirit December will bring!
+</p>
+          </div>
+        </div>
+      </div>
+<div class="text-box" onclick="toggleCollapse(this)">
+        <h1>
+          PAW-FECT INNOVATIONS
+          <span class="toggle-icon">+</span>
+        </h1>
+                <div class="collapse-content">
+         <div class="collapse-inner">
+    <p> Unleashing creativity for a cause, this STEM-aligned initiative invites each STEM section to create innovative pet care tools—such as functional feeders, dispensers, and interactive toys—using sustainable, recyclable materials. The tools are showcased in an exhibit where students can vote with a ₱5 donation, with proceeds going to animal welfare groups like PAWS. The activity
+enhances hands-on skills, promotes environmental
+awareness, encourages teamwork, and fosters
+innovation. It allows students to apply their 
+learning to real-life situations while making a 
+pawsitive impact in school and the community.
+</p>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+
+ <script>
+  function toggleCollapse(box) {
+    const content = box.querySelector('.collapse-content');
+    const icon = box.querySelector('.toggle-icon');
+    const isActive = content.classList.contains('active');
+
+    // Collapse all others
+    document.querySelectorAll('.collapse-content').forEach(c => c.classList.remove('active'));
+    document.querySelectorAll('.text-box').forEach(b => {
+      b.classList.remove('open');
+      b.classList.add('collapsed'); // Mark as collapsed by default
+      b.querySelector('.toggle-icon').textContent = '+';
+    });
+
+    // Toggle current
+    if (!isActive) {
+      content.classList.add('active');
+      box.classList.add('open');
+      box.classList.remove('collapsed'); // Remove hover class when open
+      icon.textContent = '−';
+    }
+  }
+</script>
+</body>
+</html>
+
+
+
